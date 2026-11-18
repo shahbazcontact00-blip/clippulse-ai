@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10111a">
+  <title>ClipPulse AI — Turn videos into scroll-stopping clips</title>
+  <meta name="description" content="Upload a video or add a video link to create short clips with captions, motion, and sound effects.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{sans:['DM Sans','sans-serif'],display:['Space Grotesk','sans-serif']},colors:{ink:'#10111a',panel:'#171923',line:'#2b2d3b',cyan:'#70f4f4',violet:'#a78bfa'}}}};</script>
+  <style>
+    html{scroll-behavior:smooth} body{background:#10111a;color:#f4f5fb} ::selection{background:#70f4f4;color:#10111a}
+    .glass{background:rgba(23,25,35,.82);backdrop-filter:blur(16px)} .glow{box-shadow:0 0 42px rgba(112,244,244,.12)}
+    .drop-active{border-color:#70f4f4!important;background:rgba(112,244,244,.07)!important}
+    .range{accent-color:#70f4f4} .hidden-view{display:none!important}
+  </style>
+</head>
+<body class="font-sans antialiased">
+  <header class="sticky top-0 z-40 border-b border-white/5 glass">
+    <div class="mx-auto flex h-[68px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a href="#home" class="flex items-center gap-2.5"><span class="grid h-9 w-9 place-items-center rounded-xl bg-cyan text-lg font-black text-ink">C</span><span class="font-display text-lg font-bold tracking-tight">ClipPulse <span class="text-cyan">AI</span></span></a>
+      <nav class="hidden items-center gap-7 text-sm text-slate-400 md:flex"><a class="hover:text-white" href="#create">Create clips</a><a class="hover:text-white" href="#features">Features</a><a class="hover:text-white" href="#pricing">Pricing</a></nav>
+      <div class="flex items-center gap-3"><span class="rounded-full border border-cyan/20 bg-cyan/10 px-3 py-1.5 text-xs font-semibold text-cyan"><span id="creditsCount">2</span> free clips left</span><a href="#pricing" class="hidden rounded-lg bg-white px-4 py-2 text-sm font-bold text-ink transition hover:bg-cyan sm:inline-flex">Get credits</a></div>
+    </div>
+  </header>
+
+  <main id="home" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden py-16 sm:py-24">
+      <div class="pointer-events-none absolute -right-20 top-0 h-80 w-80 rounded-full bg-violet/15 blur-[100px]"></div><div class="pointer-events-none absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-cyan/10 blur-[100px]"></div>
+      <div class="relative grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
+        <div><div class="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan/20 bg-cyan/5 px-3 py-1.5 text-xs font-semibold tracking-wide text-cyan"><span class="h-2 w-2 animate-pulse rounded-full bg-cyan"></span> YOUR VIDEO. YOUR NEXT VIRAL MOMENT.</div>
+          <h1 class="max-w-3xl font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-6xl">One video.<br><span class="bg-gradient-to-r from-cyan to-violet bg-clip-text text-transparent">A feed full of clips.</span></h1>
+          <p class="mt-6 max-w-xl text-base leading-7 text-slate-400 sm:text-lg">Turn your long videos into short-form content with captions, sound effects, smart framing, and motion—ready for Shorts, Reels, and TikTok.</p>
+          <div class="mt-8 flex flex-wrap gap-3"><a href="#create" class="rounded-xl bg-cyan px-6 py-3.5 font-bold text-ink shadow-lg shadow-cyan/10 transition hover:-translate-y-0.5">Create your first clips <span aria-hidden="true">→</span></a><a href="#pricing" class="rounded-xl border border-white/10 px-6 py-3.5 font-semibold text-white transition hover:border-white/30">See simple pricing</a></div>
+          <div class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-400"><span>✓ 2 clips free</span><span>✓ No subscription required</span><span>✓ Pay only for clip packs</span></div>
+        </div>
+        <div class="relative mx-auto w-full max-w-lg">
+          <div class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-cyan/15 to-violet/15 blur-2xl"></div>
+          <div class="relative rounded-[2rem] border border-white/10 bg-panel p-4 shadow-2xl glow sm:p-5">
+            <div class="mb-4 flex items-center justify-between"><div><div class="text-xs font-semibold uppercase tracking-[.18em] text-slate-500">Clip preview</div><div class="mt-1 font-display font-semibold">Your best moment, reframed</div></div><span class="rounded-full bg-violet/15 px-3 py-1 text-xs font-bold text-violet">9:16 SHORT</span></div>
+            <div class="relative mx-auto aspect-[9/12] max-h-[360px] overflow-hidden rounded-2xl bg-gradient-to-br from-[#24243a] via-[#172b39] to-[#15151e]">
+              <div class="absolute inset-0 opacity-50" style="background:radial-gradient(circle at 50% 40%,rgba(112,244,244,.35),transparent 30%),linear-gradient(140deg,transparent 35%,rgba(167,139,250,.28))"></div>
+              <div class="absolute left-1/2 top-[24%] h-40 w-32 -translate-x-1/2 rounded-[45%] border border-cyan/50 bg-gradient-to-b from-slate-300/30 to-slate-700/40 shadow-[0_0_60px_rgba(112,244,244,.18)]"></div>
+              <div class="absolute bottom-8 left-4 right-4 text-center"><span class="inline-block rounded-xl bg-black/55 px-4 py-3 font-display text-xl font-bold uppercase leading-tight shadow-lg sm:text-2xl">Make every<br><span class="text-cyan">second count</span></span><div class="mt-3 text-xs font-medium text-white/60">CAPTIONS · SMART CROP · SOUND</div></div>
+              <div class="absolute left-3 top-3 rounded-lg border border-white/10 bg-black/40 px-2.5 py-1.5 text-xs text-white/80">✦ AI MOMENT DETECTED</div><div class="absolute bottom-4 right-3 rounded-full bg-white/10 p-2 text-sm">▶</div>
+            </div>
+            <div class="mt-4 flex items-center justify-between text-xs text-slate-400"><span>✨ Motion + captions applied</span><span>00:34 · 1080p</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="create" class="scroll-mt-24 py-10 sm:py-16">
+      <div class="mb-8 max-w-2xl"><div class="text-xs font-bold uppercase tracking-[.2em] text-cyan">Start creating</div><h2 class="mt-3 font-display text-3xl font-bold sm:text-4xl">Bring your video. We’ll shape the clips.</h2><p class="mt-3 text-slate-400">Upload a video file or paste a link to a video you own or have permission to use.</p></div>
+      <div class="grid gap-6 lg:grid-cols-[1.05fr_.95fr]">
+        <div class="rounded-2xl border border-white/10 bg-panel p-5 sm:p-7">
+          <div class="mb-5 grid grid-cols-2 rounded-xl bg-ink p-1 text-sm font-semibold"><button id="uploadTab" class="rounded-lg bg-cyan px-3 py-2.5 text-ink">Upload video</button><button id="linkTab" class="rounded-lg px-3 py-2.5 text-slate-400 hover:text-white">Paste a link</button></div>
+          <div id="uploadPane">
+            <label id="dropZone" for="videoFile" class="flex min-h-52 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-line bg-ink/60 px-5 text-center transition hover:border-cyan/60">
+              <span class="mb-3 grid h-12 w-12 place-items-center rounded-2xl bg-cyan/10 text-2xl text-cyan">↑</span><span class="font-semibold">Drop your video here or <span class="text-cyan">browse files</span></span><span class="mt-2 text-sm text-slate-500">MP4, MOV, or WebM · Up to 2 GB</span><span id="fileName" class="mt-3 hidden max-w-full truncate text-sm font-semibold text-cyan"></span>
+            </label><input id="videoFile" type="file" accept="video/*" class="sr-only">
+          </div>
+          <div id="linkPane" class="hidden-view"><label for="videoUrl" class="mb-2 block text-sm font-semibold">Video or livestream URL</label><input id="videoUrl" type="url" placeholder="https://youtube.com/watch?v=..." class="w-full rounded-xl border border-line bg-ink px-4 py-3.5 text-white outline-none placeholder:text-slate-600 focus:border-cyan"><p class="mt-2 text-xs leading-5 text-slate-500">Links must be accessible and authorized. Some platforms restrict downloading; upload a file if a link cannot be imported.</p></div>
+          <div class="mt-6"><div class="mb-3 flex items-center justify-between"><label for="clipCount" class="text-sm font-semibold">How many clips?</label><span class="text-xs text-slate-500">Each clip uses 1 credit</span></div><div class="flex items-center gap-3"><input id="clipCount" type="range" min="1" max="2" value="1" class="range w-full"><span id="clipCountLabel" class="min-w-16 rounded-lg bg-ink px-3 py-2 text-center text-sm font-bold text-cyan">1 clip</span></div></div>
+          <div class="mt-6"><div class="mb-3 text-sm font-semibold">Choose your clip format</div><div class="grid grid-cols-3 gap-2"><button class="format-btn rounded-xl border border-cyan bg-cyan/10 p-3 text-left" data-format="9:16"><span class="block text-sm font-bold">9:16</span><span class="mt-1 block text-xs text-slate-400">Shorts / Reels</span></button><button class="format-btn rounded-xl border border-line bg-ink/50 p-3 text-left" data-format="1:1"><span class="block text-sm font-bold">1:1</span><span class="mt-1 block text-xs text-slate-400">Square</span></button><button class="format-btn rounded-xl border border-line bg-ink/50 p-3 text-left" data-format="16:9"><span class="block text-sm font-bold">16:9</span><span class="mt-1 block text-xs text-slate-400">Landscape</span></button></div></div>
+          <button id="generateBtn" class="mt-7 flex w-full items-center justify-center gap-2 rounded-xl bg-cyan px-5 py-4 font-bold text-ink transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"><span>✦</span> Generate clips <span id="generateCost">· 1 free credit</span></button>
+          <p class="mt-3 text-center text-xs text-slate-500">Your free allowance includes 2 clips. You can choose a paid pack whenever you need more.</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-panel p-5 sm:p-7">
+          <div class="flex items-start justify-between"><div><div class="text-xs font-bold uppercase tracking-[.2em] text-violet">Make it yours</div><h3 class="mt-2 font-display text-xl font-bold">Clip style</h3></div><span class="rounded-lg bg-violet/10 px-2.5 py-1.5 text-xs font-semibold text-violet">Included</span></div>
+          <div class="mt-6 space-y-5">
+            <label class="flex cursor-pointer items-center justify-between gap-4"><span><span class="block text-sm font-semibold">Auto captions</span><span class="mt-1 block text-xs text-slate-500">Word-synced subtitles</span></span><input type="checkbox" checked class="h-5 w-5 accent-cyan"></label>
+            <label class="flex cursor-pointer items-center justify-between gap-4"><span><span class="block text-sm font-semibold">Motion & smart framing</span><span class="mt-1 block text-xs text-slate-500">Track the speaker and add subtle zooms</span></span><input type="checkbox" checked class="h-5 w-5 accent-cyan"></label>
+            <label class="flex cursor-pointer items-center justify-between gap-4"><span><span class="block text-sm font-semibold">Sound effects</span><span class="mt-1 block text-xs text-slate-500">Add tasteful whooshes and emphasis</span></span><input type="checkbox" checked class="h-5 w-5 accent-cyan"></label>
+            <label class="flex cursor-pointer items-center justify-between gap-4"><span><span class="block text-sm font-semibold">3D / depth motion</span><span class="mt-1 block text-xs text-slate-500">Stylized depth effect where supported</span></span><input type="checkbox" class="h-5 w-5 accent-cyan"></label>
+          </div>
+          <div class="mt-7 rounded-xl border border-white/5 bg-ink/70 p-4"><div class="flex items-center gap-3"><span class="grid h-9 w-9 place-items-center rounded-lg bg-cyan/10 text-cyan">ⓘ</span><div><div class="text-sm font-semibold">What happens next?</div><div class="mt-1 text-xs leading-5 text-slate-400">Your source is analyzed for strong moments, then clips are framed and styled for your chosen format.</div></div></div></div>
+          <div id="progressWrap" class="mt-5 hidden"><div class="mb-2 flex justify-between text-xs"><span id="progressText" class="text-slate-300">Preparing your video…</span><span id="progressPct" class="text-cyan">0%</span></div><div class="h-2 overflow-hidden rounded-full bg-ink"><div id="progressBar" class="h-full w-0 rounded-full bg-gradient-to-r from-cyan to-violet transition-all duration-300"></div></div></div>
+          <div id="previewWrap" class="mt-5 hidden"><video id="videoPreview" controls class="max-h-64 w-full rounded-xl bg-black"></video></div>
+        </div>
+      </div>
+      <div id="results" class="mt-8 hidden rounded-2xl border border-cyan/20 bg-cyan/5 p-5"><div class="flex flex-wrap items-center justify-between gap-3"><div><div class="font-display text-lg font-bold">Your clips are ready to review</div><p class="mt-1 text-sm text-slate-400">This demo shows the upload and credit flow. Connect a video-processing service to render downloadable clips.</p></div><span class="rounded-lg bg-cyan/10 px-3 py-2 text-sm font-bold text-cyan" id="resultFormat">9:16</span></div></div>
+    </section>
+
+    <section id="features" class="scroll-mt-24 py-14 sm:py-20">
+      <div class="mx-auto max-w-2xl text-center"><div class="text-xs font-bold uppercase tracking-[.2em] text-cyan">Everything in your workflow</div><h2 class="mt-3 font-display text-3xl font-bold sm:text-4xl">Polished clips, without the busywork.</h2><p class="mt-4 text-slate-400">A focused toolkit for turning long-form video into short-form content.</p></div>
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <article class="rounded-2xl border border-white/10 bg-panel p-5"><span class="text-2xl text-cyan">✦</span><h3 class="mt-4 font-display font-bold">Find the moments</h3><p class="mt-2 text-sm leading-6 text-slate-400">Spot engaging sections and create a clean starting point for each clip.</p></article>
+        <article class="rounded-2xl border border-white/10 bg-panel p-5"><span class="text-2xl text-violet">▤</span><h3 class="mt-4 font-display font-bold">Captions that pop</h3><p class="mt-2 text-sm leading-6 text-slate-400">Generate readable subtitles and keep viewers following along.</p></article>
+        <article class="rounded-2xl border border-white/10 bg-panel p-5"><span class="text-2xl text-cyan">◎</span><h3 class="mt-4 font-display font-bold">Motion & framing</h3><p class="mt-2 text-sm leading-6 text-slate-400">Reframe for vertical, square, or widescreen with dynamic motion options.</p></article>
+        <article class="rounded-2xl border border-white/10 bg-panel p-5"><span class="text-2xl text-violet">♫</span><h3 class="mt-4 font-display font-bold">Sound & finishing</h3><p class="mt-2 text-sm leading-6 text-slate-400">Add sound accents and finishing effects to make each clip feel complete.</p></article>
+      </div>
+    </section>
+
+    <section id="pricing" class="scroll-mt-24 py-14 sm:py-20">
+      <div class="mx-auto max-w-2xl text-center"><div class="text-xs font-bold uppercase tracking-[.2em] text-cyan">Simple clip packs</div><h2 class="mt-3 font-display text-3xl font-bold sm:text-4xl">Start free. Upgrade when you’re ready.</h2><p class="mt-4 text-slate-400">Get 2 clips free, then pick a one-time pack. No monthly subscription.</p></div>
+      <div class="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-3">
+        <article class="flex flex-col rounded-2xl border border-white/10 bg-panel p-6"><div class="text-sm font-semibold text-slate-300">Starter</div><div class="mt-4 flex items-end gap-2"><span class="font-display text-4xl font-bold">$7</span><span class="pb-1 text-sm text-slate-500">one-time</span></div><div class="mt-2 text-cyan font-semibold">5 clips</div><ul class="mt-6 flex-1 space-y-3 text-sm text-slate-400"><li>✓ All video formats</li><li>✓ Captions and motion styles</li><li>✓ Download-ready exports</li></ul><button class="buy-btn mt-7 rounded-xl border border-white/15 px-4 py-3 font-semibold transition hover:border-cyan hover:text-cyan" data-pack="5 clips for $7">Choose Starter</button></article>
+        <article class="relative flex flex-col rounded-2xl border border-cyan/50 bg-gradient-to-b from-cyan/10 to-panel p-6 shadow-[0_0_40px_rgba(112,244,244,.08)]"><span class="absolute -top-3 right-5 rounded-full bg-cyan px-3 py-1 text-[10px] font-black uppercase tracking-wider text-ink">Most popular</span><div class="text-sm font-semibold text-slate-300">Creator</div><div class="mt-4 flex items-end gap-2"><span class="font-display text-4xl font-bold">$19</span><span class="pb-1 text-sm text-slate-500">one-time</span></div><div class="mt-2 text-cyan font-semibold">20 clips</div><ul class="mt-6 flex-1 space-y-3 text-sm text-slate-400"><li>✓ Everything in Starter</li><li>✓ More room to experiment</li><li>✓ Great for weekly creators</li></ul><button class="buy-btn mt-7 rounded-xl bg-cyan px-4 py-3 font-bold text-ink transition hover:brightness-110" data-pack="20 clips for $19">Choose Creator</button></article>
+        <article class="flex flex-col rounded-2xl border border-white/10 bg-panel p-6"><div class="text-sm font-semibold text-slate-300">Studio</div><div class="mt-4 flex items-end gap-2"><span class="font-display text-4xl font-bold">$39</span><span class="pb-1 text-sm text-slate-500">one-time</span></div><div class="mt-2 text-cyan font-semibold">50 clips</div><ul class="mt-6 flex-1 space-y-3 text-sm text-slate-400"><li>✓ Everything in Creator</li><li>✓ Best value for teams</li><li>✓ Plenty of clips for a campaign</li></ul><button class="buy-btn mt-7 rounded-xl border border-white/15 px-4 py-3 font-semibold transition hover:border-cyan hover:text-cyan" data-pack="50 clips for $39">Choose Studio</button></article>
+      </div>
+      <p class="mx-auto mt-5 max-w-3xl text-center text-xs leading-5 text-slate-500">Payments are not connected in this demo. Add a secure checkout provider before accepting payments. Final pricing, taxes, and pack terms should be confirmed before launch.</p>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/5"><div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-8 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8"><a href="#home" class="font-display font-bold text-white">ClipPulse <span class="text-cyan">AI</span></a><span>Make more from every moment. Use only video you have rights to.</span><a class="hover:text-cyan" href="mailto:shahbazcontact00@gmail.com">Contact support</a></div></footer>
+  <div id="toast" role="status" class="fixed bottom-5 left-1/2 z-50 hidden -translate-x-1/2 rounded-xl border border-white/10 bg-panel px-5 py-3 text-sm font-semibold shadow-2xl"></div>
+
+  <script>
+    (()=>{
+      const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+      const creditsEl=$('#creditsCount'), slider=$('#clipCount'), label=$('#clipCountLabel'), cost=$('#generateCost');
+      let credits=Math.max(0,Number(localStorage.getItem('clippulseCredits')??2)), selectedFormat='9:16', activeSource='upload', selectedFile=null, toastTimer;
+      function updateCredits(){creditsEl.textContent=credits; localStorage.setItem('clippulseCredits',String(credits)); slider.max=String(Math.max(1,Math.min(10,credits))); slider.value=String(Math.min(Number(slider.value),Number(slider.max))); updateCount();}
+      function updateCount(){const n=Number(slider.value);label.textContent=`${n} ${n===1?'clip':'clips'}`;cost.textContent=`· ${n} ${n===1?'credit':'credits'}`;$('#generateBtn').disabled=credits<1||n>credits;}
+      function toast(message){const el=$('#toast');el.textContent=message;el.classList.remove('hidden');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.add('hidden'),3500);}
+      $('#uploadTab').addEventListener('click',()=>{activeSource='upload';$('#uploadPane').classList.remove('hidden-view');$('#linkPane').classList.add('hidden-view');$('#uploadTab').className='rounded-lg bg-cyan px-3 py-2.5 text-ink';$('#linkTab').className='rounded-lg px-3 py-2.5 text-slate-400 hover:text-white';});
+      $('#linkTab').addEventListener('click',()=>{activeSource='link';$('#linkPane').classList.remove('hidden-view');$('#uploadPane').classList.add('hidden-view');$('#linkTab').className='rounded-lg bg-cyan px-3 py-2.5 text-ink';$('#uploadTab').className='rounded-lg px-3 py-2.5 text-slate-400 hover:text-white';});
+      const fileInput=$('#videoFile'), drop=$('#dropZone');
+      function setFile(file){if(!file)return;if(!file.type.startsWith('video/')){toast('Please choose a video file.');return;}selectedFile=file;$('#fileName').textContent=`✓ ${file.name}`;$('#fileName').classList.remove('hidden');$('#previewWrap').classList.remove('hidden');const preview=$('#videoPreview');if(preview.dataset.url)URL.revokeObjectURL(preview.dataset.url);const url=URL.createObjectURL(file);preview.src=url;preview.dataset.url=url;}
+      fileInput.addEventListener('change',e=>setFile(e.target.files[0]));
+      ['dragenter','dragover'].forEach(name=>drop.addEventListener(name,e=>{e.preventDefault();drop.classList.add('drop-active');}));
+      ['dragleave','drop'].forEach(name=>drop.addEventListener(name,e=>{e.preventDefault();drop.classList.remove('drop-active');}));
+      drop.addEventListener('drop',e=>setFile(e.dataTransfer.files[0]));
+      slider.addEventListener('input',updateCount);
+      $$('.format-btn').forEach(btn=>btn.addEventListener('click',()=>{$$('.format-btn').forEach(b=>b.className='format-btn rounded-xl border border-line bg-ink/50 p-3 text-left');btn.className='format-btn rounded-xl border border-cyan bg-cyan/10 p-3 text-left';selectedFormat=btn.dataset.format;}));
+      $('#generateBtn').addEventListener('click',()=>{
+        const n=Number(slider.value);
+        if(credits<n){toast('You’re out of free clips. Choose a clip pack to continue.');$('#pricing').scrollIntoView({behavior:'smooth'});return;}
+        if(activeSource==='upload'&&!selectedFile){toast('Upload a video file to get started.');return;}
+        if(activeSource==='link'){const value=$('#videoUrl').value.trim();if(!value){toast('Paste a video link first.');return;}try{new URL(value);}catch{toast('Enter a valid video URL.');return;}toast('Link received. A server-side video importer is needed to process it.');return;}
+        credits-=n;updateCredits();const wrap=$('#progressWrap'),bar=$('#progressBar'),pct=$('#progressPct'),text=$('#progressText');wrap.classList.remove('hidden');$('#results').classList.add('hidden');$('#resultFormat').textContent=selectedFormat;$('#generateBtn').disabled=true;
+        let progress=0;const timer=setInterval(()=>{progress=Math.min(100,progress+20);bar.style.width=progress+'%';pct.textContent=progress+'%';text.textContent=progress<100?'Analyzing your video…':'Demo complete';if(progress===100){clearInterval(timer);$('#results').classList.remove('hidden');$('#generateBtn').disabled=credits<1;toast(`${n} demo ${n===1?'clip':'clips'} created. Connect a rendering backend for real exports.`);}},220);
+      });
+      $$('.buy-btn').forEach(btn=>btn.addEventListener('click',()=>toast(`Selected ${btn.dataset.pack}. Secure checkout needs to be connected.`)));
+      updateCredits();
+    })();
+  </script>
+</body>
+</html>
